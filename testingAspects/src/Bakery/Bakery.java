@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bakery {
-	private ArrayList<Donut> donuts = new ArrayList<Donut>();
+	private ArrayList<Object> donuts = new ArrayList<>();
 	private ArrayList<Filling> fillings = new ArrayList<Filling>();
 	enum Flavours {
 		Strawberry,
@@ -17,7 +17,7 @@ public class Bakery {
 		Thick
 	}
 	
-	public boolean checkQuantity(Donut[] a, Filling[] b) {
+	public boolean checkQuantity(EmptyDonut[] a, Filling[] b) {
 //		Check whether there is enough filling for all donuts;
 		if(a.length / b.length <= 1) {
 			return true;
@@ -35,7 +35,7 @@ public class Bakery {
 	
 	private void bakeDonuts(int ammount) {
 		for(int i = 0; i < ammount; i++) {
-			this.donuts.add(new Donut(3, fillings.remove(0)));
+			this.donuts.add(new FilledDonut(3, fillings));
 		}
 		
 	}
@@ -43,12 +43,11 @@ public class Bakery {
 	public static void main(String[] args) {
 		Bakery bakery = new Bakery();
 		bakery.refillFilling(10);
-		bakery.bakeDonuts(11);
+		bakery.bakeDonuts(15);
 		
 
-		for(Filling foo: bakery.fillings) {
-			System.out.println(foo.getFlavour());
-			System.out.println(foo.getThickness());
+		for(Object foo: bakery.donuts) {
+			System.out.println("Donut with" + foo);
 		}
 		System.out.println("End of program");
 	}
