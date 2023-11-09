@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Bakery {
 	private ArrayList<Object> donuts = new ArrayList<>();
-	private ArrayList<Filling> fillings = new ArrayList<Filling>();
+	private static ArrayList<Filling> fillings = new ArrayList<Filling>();
 	enum Flavours {
 		Strawberry,
 		Vanilla,
@@ -25,17 +25,18 @@ public class Bakery {
 		return false;
 	}
 	
+	
 	public void refillFilling(int ammount) {
 		Random random = new Random();
 		
 		for(int i = 0; i < ammount; i++) {
-			this.fillings.add(new Filling(Thicknesses.values()[random.nextInt(Thicknesses.values().length)].name(), Flavours.values()[random.nextInt(Flavours.values().length)].name()));
+			Bakery.fillings.add(new Filling(Thicknesses.values()[random.nextInt(Thicknesses.values().length)].name(), Flavours.values()[random.nextInt(Flavours.values().length)].name()));
 		}
 	}
 	
 	private void bakeDonuts(int ammount) {
 		for(int i = 0; i < ammount; i++) {
-			this.donuts.add(new FilledDonut(3, fillings));
+			this.donuts.add(new EmptyDonut(3, fillings));
 		}
 		
 	}
@@ -44,6 +45,7 @@ public class Bakery {
 		Bakery bakery = new Bakery();
 		bakery.refillFilling(10);
 		bakery.bakeDonuts(15);
+//		System.out.println(new EmptyDonut(32, fillings));
 		
 
 		for(Object foo: bakery.donuts) {

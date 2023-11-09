@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 public class FilledDonut extends EmptyDonut {
 	private Filling filling;
-	public FilledDonut(float width, ArrayList<Filling> fillings) {
-		super(width, fillings);
+	public FilledDonut(ArrayList<Filling> fillings) {
+		super(5, fillings);
+		this.setFilling(fillings.remove(0));
 	}
 	
 	public Filling getFilling() {
-		return this.getFilling();
+		return this.filling;
 	}
 
 	@Override
 	public void setFilling(Filling filling) {
-		this.setFilling(filling);
+		this.filling = filling;
 	}
 	
 	@Override
