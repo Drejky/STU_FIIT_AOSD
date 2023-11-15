@@ -17,9 +17,9 @@ public class Bakery {
 		Thick
 	}
 	
-	public boolean checkQuantity(EmptyDonut[] a, Filling[] b) {
+	public boolean checkQuantity(ArrayList<Object> a, ArrayList<Filling> b) {
 //		Check whether there is enough filling for all donuts;
-		if(a.length / b.length <= 1) {
+		if(a.size() / b.size() <= 1) {
 			return true;
 		}
 		return false;
@@ -45,6 +45,9 @@ public class Bakery {
 		Bakery bakery = new Bakery();
 		bakery.refillFilling(10);
 		bakery.bakeDonuts(15);
+		
+//		bakery.checkQuantity(bakery.donuts, fillings);
+		
 //		System.out.println(new EmptyDonut(32, fillings));
 		
 
