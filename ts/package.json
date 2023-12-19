@@ -1,0 +1,18 @@
+{
+  "name": "typescript_aspects",
+  "version": "1.0.0",
+  "description": "Demo of aspect js for STU FIIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "author": "Peter Kúdela",
+  "license": "MIT",
+  "dependencies": {
+    "aspectjs": "^2.0.4",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5"
+  }
+}

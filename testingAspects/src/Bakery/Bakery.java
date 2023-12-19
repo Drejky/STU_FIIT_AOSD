@@ -25,6 +25,24 @@ public class Bakery {
 		return false;
 	}
 	
+	public boolean checkQuantityNoAspect(ArrayList<Object> a, ArrayList<Filling> b) {
+//		Check whether there is enough filling for all donuts;
+		if(a.size() / b.size() <= 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean checkQuantityCondition(ArrayList<Object> a, ArrayList<Filling> b) {
+		if(b.size() <= 0) {
+			return false;
+		}
+//		Check whether there is enough filling for all donuts;
+		if(a.size() / b.size() <= 1) {
+			return true;
+		}
+		return false;
+	}
 	
 	public void refillFilling(int ammount) {
 		Random random = new Random();
@@ -43,17 +61,31 @@ public class Bakery {
     
 	public static void main(String[] args) {
 		Bakery bakery = new Bakery();
-		bakery.refillFilling(10);
-		bakery.bakeDonuts(15);
+//		bakery.refillFilling(10);
+//		bakery.bakeDonuts(15);
 		
-//		bakery.checkQuantity(bakery.donuts, fillings);
+		
+		bakery.checkQuantity(bakery.donuts, fillings);
+		
+		ArrayList<Double> times = new ArrayList<>();
+
+		for (int i = 0; i < 30; i++) {
+		    long t0 = System.nanoTime();
+
+		    if (i < 10) bakery.checkQuantity(bakery.donuts, fillings);
+//		    else if (i >= 10 && i < 20) bakery.checkQuantityNoAspect(bakery.donuts, fillings);	// Without any way to check java throws exception
+		    else if (i >= 20) bakery.checkQuantityCondition(bakery.donuts, fillings);
+
+		    long t1 = System.nanoTime();
+		    times.add((double)(t1 - t0) / 1_000_000);
+		}
 		
 //		System.out.println(new EmptyDonut(32, fillings));
 		
 
-		for(Object foo: bakery.donuts) {
-			System.out.println("Donut with" + foo);
-		}
+		System.out.println(times.subList(0, 10));
+		System.out.println(times.subList(10, 20));
+		System.out.println(times.subList(20, 30));
 		System.out.println("End of program");
 	}
 }
